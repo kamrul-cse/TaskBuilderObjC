@@ -16,6 +16,7 @@
 		0292BD3324A38BA0006F7E2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0292BD3224A38BA0006F7E2F /* Assets.xcassets */; };
 		0292BD3624A38BA0006F7E2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0292BD3424A38BA0006F7E2F /* LaunchScreen.storyboard */; };
 		0292BD3924A38BA0006F7E2F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0292BD3824A38BA0006F7E2F /* main.m */; };
+		02B6C79B24A3A65C0083C913 /* Task.h in Sources */ = {isa = PBXBuildFile; fileRef = 02B6C79A24A3A65C0083C913 /* Task.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,13 @@
 		0292BD3524A38BA0006F7E2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0292BD3724A38BA0006F7E2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0292BD3824A38BA0006F7E2F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		02B6C79524A3A3F40083C913 /* RowData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RowData.h; sourceTree = "<group>"; };
+		02B6C79624A3A55E0083C913 /* TaskBuilderObjC-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TaskBuilderObjC-Prefix.pch"; sourceTree = "<group>"; };
+		02B6C79724A3A57D0083C913 /* CommonMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonMacros.h; sourceTree = "<group>"; };
+		02B6C79924A3A5E70083C913 /* TaskManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskManager.h; sourceTree = "<group>"; };
+		02B6C79A24A3A65C0083C913 /* Task.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		02B6C79C24A3A91A0083C913 /* TaskDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskDelegate.h; sourceTree = "<group>"; };
+		02B6C79D24A3AF6C0083C913 /* TaskViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskViewModel.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +102,7 @@
 		0292BD2524A38B9F006F7E2F /* TaskBuilderObjC */ = {
 			isa = PBXGroup;
 			children = (
+				02B6C79824A3A5A80083C913 /* Macros */,
 				0292BD3F24A38BF9006F7E2F /* Modules */,
 				0292BD2624A38B9F006F7E2F /* AppDelegate.h */,
 				0292BD2724A38B9F006F7E2F /* AppDelegate.m */,
@@ -111,11 +120,33 @@
 		0292BD3F24A38BF9006F7E2F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				02B6C79424A3A3C50083C913 /* Components */,
 				027AA3C824A3922A004F98FE /* PerformTask */,
 				027AA3C724A39224004F98FE /* AddTask */,
 				027AA3C624A3902F004F98FE /* Home */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		02B6C79424A3A3C50083C913 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				02B6C79524A3A3F40083C913 /* RowData.h */,
+				02B6C79A24A3A65C0083C913 /* Task.h */,
+				02B6C79C24A3A91A0083C913 /* TaskDelegate.h */,
+				02B6C79924A3A5E70083C913 /* TaskManager.h */,
+				02B6C79D24A3AF6C0083C913 /* TaskViewModel.h */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		02B6C79824A3A5A80083C913 /* Macros */ = {
+			isa = PBXGroup;
+			children = (
+				02B6C79624A3A55E0083C913 /* TaskBuilderObjC-Prefix.pch */,
+				02B6C79724A3A57D0083C913 /* CommonMacros.h */,
+			);
+			path = Macros;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02B6C79B24A3A65C0083C913 /* Task.h in Sources */,
 				0292BD2E24A38B9F006F7E2F /* HomeVC.m in Sources */,
 				0292BD2824A38B9F006F7E2F /* AppDelegate.m in Sources */,
 				0292BD3924A38BA0006F7E2F /* main.m in Sources */,
