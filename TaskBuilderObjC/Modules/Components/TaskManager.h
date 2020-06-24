@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "TaskViewModel.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface TaskManager: NSObject
 @property (strong, nonatomic) NSMutableArray<TaskViewModel *>* taskViewModels;
 @end
@@ -43,5 +41,3 @@ static TaskManager *_shared = nil;
 }
 
 @end
-
-NS_ASSUME_NONNULL_END

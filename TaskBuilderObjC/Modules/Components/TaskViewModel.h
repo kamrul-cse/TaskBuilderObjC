@@ -8,10 +8,7 @@
 
 
 
-#ifndef TaskViewModel_h
-#define TaskViewModel_h
-
-NS_ASSUME_NONNULL_BEGIN
+#import <Foundation/Foundation.h>
 
 @interface TaskViewModel: NSObject
 @property (strong, nonatomic) Task* model;
@@ -34,7 +31,3 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 @end
-
-NS_ASSUME_NONNULL_END
-
-#endif /* TaskViewModel_h */

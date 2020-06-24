@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "Task.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @protocol TaskDelegate
 
 //- (void)progress:(Task)task;
@@ -20,5 +18,3 @@ NS_ASSUME_NONNULL_BEGIN
 //func stateChanged(task: Task)
 
 @end
-
-NS_ASSUME_NONNULL_END

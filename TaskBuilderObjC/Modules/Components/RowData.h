@@ -8,13 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface RowData: NSObject
 @property (strong, nonatomic) UITableViewCell* cell;
 @end
 
 @implementation RowData
 @end
-
-NS_ASSUME_NONNULL_END

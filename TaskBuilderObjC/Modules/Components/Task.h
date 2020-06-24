@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "TaskDelegate.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface Task: NSOperation {
     id delegate;
 }
@@ -45,5 +43,3 @@ NS_ASSUME_NONNULL_BEGIN
     }
 }
 @end
-
-NS_ASSUME_NONNULL_END
