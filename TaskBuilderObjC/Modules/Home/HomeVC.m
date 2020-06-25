@@ -26,8 +26,7 @@
     viewModel = [[HomeVM alloc] init];
     viewModel.delegate = self;
     
-    //rows = [[TaskManager sharedTaskManager] setupMockData];
-    [viewModel setupMockData];
+    [_startButton setTitle:@"Simulate Mock Tasks" forState:UIControlStateNormal];
     rows = [viewModel getRows];
     
     _tableView.tableFooterView = [[UIView alloc] init];
@@ -35,24 +34,48 @@
     _tableView.dataSource = self;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self stopAction];
+}
+
 - (IBAction)startTapped:(id)sender {
-    if ([_startButton.titleLabel.text  isEqual: @"Stop"]) {
-        NSLog(@"Stop tapped");
-        [viewModel stop];
-        [_startButton setTitle:@"Resume" forState:UIControlStateNormal];
+    if ([_startButton.titleLabel.text  isEqual: @"Simulate Mock Tasks"]) {
+        NSLog(@"Simulate Mock Tasks tapped -------------------------------------");
+        [viewModel setupMockData];
+        rows = [viewModel getRows];
+        [_tableView reloadData];
+        [_startButton setTitle:@"Start" forState:UIControlStateNormal];
+    } else if ([_startButton.titleLabel.text  isEqual: @"Stop"]) {
+        NSLog(@"Stop tapped -------------------------------------");
+        [self stopAction];
     } else if ([_startButton.titleLabel.text  isEqual: @"Resume"]) {
-        NSLog(@"Resume tapped");
+        NSLog(@"Resume tapped -----------------------------------");
         [viewModel start];
         [_startButton setTitle:@"Resume" forState:UIControlStateNormal];
     } else {
-        NSLog(@"Start tapped");
+        NSLog(@"Start tapped XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         [viewModel start];
     }
     
 }
 
+- (void) stopAction {
+    [viewModel stop];
+    [_startButton setTitle:@"Resume" forState:UIControlStateNormal];
+}
+
 - (IBAction)trashTapped:(id)sender {
-    
+    NSLog(@"trash tapped");
+    [viewModel removeAll];
+    [self dataUpdated];
 }
 
 #pragma mark - HomeVMDelegate
@@ -61,8 +84,9 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         __weak HomeVC *weakSelf = self;
         [weakSelf.tableView reloadData];
-        
-        if (weakSelf.viewModel.canResume) {
+        if (!weakSelf.viewModel.haveTasks) {
+            [weakSelf.startButton setTitle:@"Simulate Mock Tasks" forState:UIControlStateNormal];
+        } else if (weakSelf.viewModel.canResume) {
             [weakSelf.startButton setTitle:@"Stop" forState:UIControlStateNormal];
         } else {
             [weakSelf.startButton setTitle:@"Start" forState:UIControlStateNormal];

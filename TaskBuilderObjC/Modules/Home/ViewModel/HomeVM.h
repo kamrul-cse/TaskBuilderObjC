@@ -13,12 +13,25 @@
 @interface HomeVM: NSObject <TaskManagerDelegate>
 @property (strong, nonatomic) NSMutableArray<UITableViewCell*>* rows;
 @property (nonatomic) BOOL canResume;
+@property (nonatomic) BOOL haveTasks;
 
 @property (nonatomic, weak) id <HomeVMDelegate> delegate;
 @end
 
 @implementation HomeVM
 @synthesize rows;
+@synthesize canResume;
+@synthesize haveTasks;
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        rows = [[NSMutableArray alloc] init];
+        [rows addObject: [self getCell:@"No Tasks Found"] ];
+    }
+    return self;
+}
 
 - (void) start {
     [[TaskManager sharedTaskManager] setDelegate:self];
@@ -27,6 +40,13 @@
 
 - (void) stop {
     [[TaskManager sharedTaskManager] stop];
+}
+
+- (void) removeAll {
+    [[TaskManager sharedTaskManager] removeAll];
+    [rows removeAllObjects];
+    [rows addObject: [self getCell:@"No Tasks Found"] ];
+    haveTasks = NO;
 }
 
 - (void) setupMockData {
@@ -40,10 +60,11 @@
         TaskViewModel *taskVM = vms[i];
         [rows addObject:taskVM.cell];
     }
+    haveTasks = YES;
 }
 
 - (void) refreshData {
-    _canResume = NO;
+    canResume = NO;
     NSMutableArray *pending = [[NSMutableArray alloc] init];
     NSMutableArray *running = [[NSMutableArray alloc] init];
     NSMutableArray *completed = [[NSMutableArray alloc] init];
@@ -69,7 +90,7 @@
             TaskViewModel *taskVM = pending[i];
             [rows addObject:taskVM.cell];
         }
-        _canResume = YES;
+        canResume = YES;
     }
     
     if (running.count > 0) {
@@ -80,7 +101,7 @@
             TaskViewModel *taskVM = running[i];
             [rows addObject:taskVM.cell];
         }
-        _canResume = YES;
+        canResume = YES;
     }
     
     [completed sortUsingSelector:@selector(compare:)];
@@ -94,7 +115,7 @@
         }
     }
     
-    if (!_canResume) {
+    if (!canResume) {
         [[TaskManager sharedTaskManager] reset];
     }
     
@@ -112,10 +133,6 @@
 
 - (NSMutableArray<UITableViewCell*>*) getRows {
     return rows;
-}
-
-- (BOOL) canResume {
-    return _canResume;
 }
 
 #pragma mark - TaskManagerDelegate

@@ -39,6 +39,11 @@ static TaskManager *_shared = nil;
     [_taskViewModels addObject: taskVM];
 }
 
+- (void) removeAll {
+    [self stop];
+    [_taskViewModels removeAllObjects];
+}
+
 - (void) start {
     _queue = [[NSOperationQueue alloc] init];
     for (int i=0; i<_taskViewModels.count; i++) {
