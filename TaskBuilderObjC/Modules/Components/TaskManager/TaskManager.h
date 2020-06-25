@@ -66,40 +66,53 @@ static TaskManager *_shared = nil;
     NSMutableArray<TaskViewModel*>* rows = _taskViewModels;
     for (int i=0; i<rows.count; i++) {
         rows[i].model = [rows[i].model getCopy];
-        [rows[i] clearDependencies];
     }
     
     [[rows[2] model] addDependency: [rows[1] model]];
-    [rows[2] addDepency:rows[1].model.taskName];
     
     [[rows[3] model] addDependency: [rows[2] model]];
     [[rows[3] model] addDependency: [rows[1] model]];
-    [rows[3] addDepency:rows[1].model.taskName];
-    [rows[3] addDepency:rows[2].model.taskName];
+    
+    [self bindDependencies];
 }
 
 - (NSMutableArray<TaskViewModel *>*) setupMockData {
     NSMutableArray<TaskViewModel*>* rows = [[NSMutableArray alloc] init];
-    [rows addObject: [TaskViewModel getTaskVM:@"Man" time:10 delegate:self]];
-    [rows addObject: [TaskViewModel getTaskVM:@"Woman" time:5 delegate:self]];
-    [rows addObject: [TaskViewModel getTaskVM:@"Child" time:8 delegate:self]];
-    [rows addObject: [TaskViewModel getTaskVM:@"Baby" time:10 delegate:self]];
-    
-    [[rows[2] model] addDependency: [rows[1] model]];
-    [rows[2] addDepency:rows[1].model.taskName];
-    
-    [[rows[3] model] addDependency: [rows[2] model]];
-    [[rows[3] model] addDependency: [rows[1] model]];
-    [rows[3] addDepency:rows[1].model.taskName];
-    [rows[3] addDepency:rows[2].model.taskName];
+    [rows addObject: [TaskViewModel getTaskVM:@"Man" time:10 dependencies:NULL delegate:self]];
+    [rows addObject: [TaskViewModel getTaskVM:@"Woman" time:5 dependencies:NULL delegate:self]];
+    [rows addObject: [TaskViewModel getTaskVM:@"Child" time:8 dependencies:@[@"Woman"] delegate:self]];
+    [rows addObject: [TaskViewModel getTaskVM:@"Baby" time:10 dependencies:@[@"Woman", @"Child"] delegate:self]];
     
     _taskViewModels = rows;
+    [self bindDependencies];
     
     return _taskViewModels;
 }
 
+- (void) bindDependencies {
+    for (int i=0; i<_taskViewModels.count; i++) {
+        TaskViewModel *taskVM = _taskViewModels[i];
+        NSArray *dependencies = _taskViewModels[i].dependencies;
+        for (int j=0; j<dependencies.count; j++) {
+            NSString *taskName = dependencies[j];
+            Task *dependentTask = [self getTaskVM:taskName].model;
+            NSLog(@"`%@` will be waiting for `%@`", taskVM.model.taskName, dependentTask.taskName);
+            [taskVM.model addDependency:dependentTask];
+        }
+    }
+}
+
 - (NSMutableArray<TaskViewModel *>*) getData {
     return _taskViewModels;
+}
+
+- (TaskViewModel *) getTaskVM: (NSString*)taskName_ {
+    for (int i=0; i<_taskViewModels.count; i++) {
+        if ([_taskViewModels[i].model.taskName isEqualToString:taskName_]) {
+            return _taskViewModels[i];
+        }
+    }
+    return NULL;
 }
 
 #pragma mark - TaskViewModelDelegate

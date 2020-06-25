@@ -23,7 +23,7 @@
 @implementation TaskViewModel
 @synthesize delegate;
 
-+ (TaskViewModel*) getTaskVM: (NSString*)name_ time:(int)estimatedTime_ delegate: (id <TaskViewModelDelegate>)delegate_ {
++ (TaskViewModel*) getTaskVM: (NSString*)name_ time:(int)estimatedTime_ dependencies:(NSArray<NSString*>*)dependencies_ delegate: (id <TaskViewModelDelegate>)delegate_ {
     Task *task = [[Task alloc] initWithName:name_ time:estimatedTime_];
     
     TaskCell *cell = [TaskCell getCell];
@@ -37,7 +37,7 @@
     vm.cell = cell;
     vm.delegate = delegate_;
     
-    vm.dependencies = [[NSMutableArray alloc] init];
+    [vm setup:dependencies_];
     
     return vm;
 }
@@ -56,6 +56,14 @@
         _cell.statusLabel.text = [NSString stringWithFormat:@"Depends on %@", [_dependencies componentsJoinedByString:@", "]];
     }
     
+}
+
+- (void) setup:(NSArray*)dependencies_ {
+    _dependencies = [[NSMutableArray alloc] init];
+    if (dependencies_.count > 0) {
+        _cell.statusLabel.text = [NSString stringWithFormat:@"Depends on %@", [dependencies_ componentsJoinedByString:@", "]];
+        _dependencies = [[NSMutableArray alloc] initWithArray:dependencies_];
+    }
 }
 
 - (void)configure:(NSString *)taskName_ progress:(double)value_ {
