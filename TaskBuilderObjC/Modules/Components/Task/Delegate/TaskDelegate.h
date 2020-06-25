@@ -14,10 +14,4 @@
 - (void) progress: (NSString*) taskName_ progress:(float)value_;
 - (void) stateChanged: (NSString*) taskName_ progress:(float)value_;
 
-//- (void)progress:(Task)task;
-//- (void)stateChanged:(RowData *)task;
-
-//func progress(task: Task)
-//func stateChanged(task: Task)
-
 @end

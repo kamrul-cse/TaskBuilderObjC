@@ -14,15 +14,6 @@
     [super awakeFromNib];
 }
 
-//- (void) configure: (Task*)task_ {
-//    _nameLabel.text = task_.taskName;
-//    //_statusLabel.text = [NSString stringWithFormat:@"%0.1f", task_.taskProgress];
-//}
-
-+ (UINib*) getNib {
-    return [UINib nibWithNibName:@"TaskCell" bundle:nil];
-}
-
 + (TaskCell*) getCell {
     TaskCell* cell = (TaskCell*) [[[NSBundle mainBundle] loadNibNamed:@"TaskCell" owner:self options:NULL] firstObject];
     return cell;

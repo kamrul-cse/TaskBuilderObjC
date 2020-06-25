@@ -19,10 +19,11 @@
 @property (strong, nonatomic) NSMutableArray<NSString*>* dependencies;
 @property (nonatomic, weak) id <TaskViewModelDelegate> delegate;
 
+// methods
+- (void) setup:(NSArray*)dependencies_;
 
 + (TaskViewModel*) getTaskVM: (NSString*)name_ time:(int)estimatedTime_ dependencies:(NSArray<NSString*>*)dependencies_ delegate: (id <TaskViewModelDelegate>)delegate_;
-
-+ (TaskViewModel*) getTaskVM: (NSString*)name_ time:(int)estimatedTime_ dependencies:(NSArray<NSString*>*)dependencies_;
 + (TaskViewModel*) constructTaskVM: (NSString*)name_ time: (NSString*)time_ dependency:(NSString*)dependency_;
-- (void) setup:(NSArray*)dependencies_;
+
++ (UITableViewCell*) getCell: (NSString*) title;
 @end

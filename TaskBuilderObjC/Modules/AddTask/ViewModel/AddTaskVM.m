@@ -1,15 +1,12 @@
 //
-//  AddTaskVM.h
+//  AddTaskVM.m
 //  TaskBuilderObjC
 //
 //  Created by Md. Kamrul Hasan on 25/6/20.
 //  Copyright © 2020 MKHG Lab. All rights reserved.
 //
-#import <UIKit/UIKit.h>
-#import "TaskManager.h"
 
-@interface AddTaskVM: NSObject
-@end
+#import "AddTaskVM.h"
 
 @implementation AddTaskVM
 

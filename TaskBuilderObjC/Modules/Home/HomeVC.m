@@ -47,7 +47,9 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    [self stopAction];
+    if (viewModel.runningTasks) {
+        [self stopAction];
+    }
 }
 
 - (IBAction)startTapped:(id)sender {
@@ -90,8 +92,10 @@
         [weakSelf.tableView reloadData];
         if (!weakSelf.viewModel.haveTasks) {
             [weakSelf.startButton setTitle:@"Simulate Mock Tasks" forState:UIControlStateNormal];
-        } else if (weakSelf.viewModel.canResume) {
+        } else if (weakSelf.viewModel.runningTasks) {
             [weakSelf.startButton setTitle:@"Stop" forState:UIControlStateNormal];
+        } else if (weakSelf.viewModel.canResume) {
+            [weakSelf.startButton setTitle:@"Resume" forState:UIControlStateNormal];
         } else {
             [weakSelf.startButton setTitle:@"Start" forState:UIControlStateNormal];
         }

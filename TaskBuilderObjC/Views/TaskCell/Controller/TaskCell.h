@@ -12,7 +12,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
-//@property (strong, nonatomic) Task *task;
 
+// methods
 + (TaskCell*) getCell;
 @end

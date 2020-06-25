@@ -11,7 +11,7 @@
 @implementation Task
 @synthesize delegate;
 
--(id)initWithName:(NSString *)taskName_ time:(int)estimatedTime_
+- (id) initWithName:(NSString *)taskName_ time:(int)estimatedTime_
 {
      self = [super init];
      if (self) {
@@ -23,7 +23,7 @@
      return self;
 }
 
--(id)initWithName:(NSString *)taskName_ time:(int)estimatedTime_ progress:(float)progress_ delegate:(id <TaskDelegate>)delegate_
+- (id) initWithName:(NSString *)taskName_ time:(int)estimatedTime_ progress:(float)progress_ delegate:(id <TaskDelegate>)delegate_
 {
      self = [super init];
      if (self) {
@@ -36,7 +36,7 @@
      return self;
 }
 
-- (void)main {
+- (void) main {
     int initialValue = MAX(1, (int)((_taskProgress/100)*_estimatedTime));
     for (int i=initialValue; i<=_estimatedTime; i++) {
         if (_stopQueued) {

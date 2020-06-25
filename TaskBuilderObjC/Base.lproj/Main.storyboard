@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home-->
+        <!--Task Builder-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="HomeVC" id="BYZ-38-t0r" customClass="HomeVC" sceneMemberID="viewController">
@@ -65,7 +65,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Home" id="4tL-6m-TrP">
+                    <navigationItem key="navigationItem" title="Task Builder" id="4tL-6m-TrP">
                         <barButtonItem key="leftBarButtonItem" systemItem="trash" id="Sno-KS-Vfe">
                             <connections>
                                 <action selector="trashTapped:" destination="BYZ-38-t0r" id="d4Z-78-ZAb"/>
@@ -86,37 +86,6 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="126.5625"/>
         </scene>
-        <!--Task Builder-->
-        <scene sceneID="KCb-Iu-bOz">
-            <objects>
-                <viewController id="EXU-6O-c9r" customClass="PerformTaskVC" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kWd-9z-u0T">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="exm-Ep-c77">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="exm-Ep-c77" firstAttribute="top" secondItem="pku-rG-nkL" secondAttribute="top" id="FaZ-PX-Vvj"/>
-                            <constraint firstItem="exm-Ep-c77" firstAttribute="leading" secondItem="pku-rG-nkL" secondAttribute="leading" id="gIC-0U-wWb"/>
-                            <constraint firstItem="pku-rG-nkL" firstAttribute="trailing" secondItem="exm-Ep-c77" secondAttribute="trailing" id="uTf-n6-tey"/>
-                            <constraint firstItem="pku-rG-nkL" firstAttribute="bottom" secondItem="exm-Ep-c77" secondAttribute="bottom" id="x8H-qV-05g"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="pku-rG-nkL"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Task Builder" id="Wb2-5S-0aq"/>
-                    <connections>
-                        <outlet property="tableView" destination="exm-Ep-c77" id="bCK-mX-Wgx"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ixc-1C-lDA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1048" y="818"/>
-        </scene>
         <!--Add Task-->
         <scene sceneID="fzy-H6-bMv">
             <objects>
@@ -126,7 +95,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="BpM-2x-nWE">
-                                <rect key="frame" x="16" y="104" width="382" height="268"/>
+                                <rect key="frame" x="16" y="104" width="382" height="290.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Bsz-Cr-dAx">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="60"/>
@@ -161,7 +130,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="UhO-ZS-PN0">
-                                        <rect key="frame" x="0.0" y="152" width="382" height="60"/>
+                                        <rect key="frame" x="0.0" y="152" width="382" height="82.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dependency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xkb-W8-qC9">
                                                 <rect key="frame" x="0.0" y="0.0" width="382" height="18"/>
@@ -174,10 +143,16 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Put comma (,) for multiple dependency" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eer-Ll-52T">
+                                                <rect key="frame" x="0.0" y="68" width="382" height="14.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smF-hy-1zZ">
-                                        <rect key="frame" x="0.0" y="228" width="382" height="40"/>
+                                        <rect key="frame" x="0.0" y="250.5" width="382" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="wGk-Cb-YMT"/>
                                         </constraints>
@@ -198,7 +173,7 @@
                                         </connections>
                                     </button>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7f-7t-VsL">
-                                        <rect key="frame" x="0.0" y="268" width="382" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="290.5" width="382" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>

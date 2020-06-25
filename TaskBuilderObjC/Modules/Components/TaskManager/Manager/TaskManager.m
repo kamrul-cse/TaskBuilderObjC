@@ -21,7 +21,6 @@ static TaskManager *_shared = nil;
     }
     return nil;
 }
-//SINGLETON_FOR_CLASS(YourSingletonClass)
 
 - (void) add:(TaskViewModel*)taskVM {
     if (_taskViewModels == NULL) {
@@ -48,6 +47,7 @@ static TaskManager *_shared = nil;
 - (void) stop {
     for (int i=0; i<_taskViewModels.count; i++) {
         _taskViewModels[i].model.stopQueued = YES;
+        [_taskViewModels[i].model cancel];
     }
     [_queue cancelAllOperations];
     [self setupForResumeOperation];
@@ -73,10 +73,12 @@ static TaskManager *_shared = nil;
 
 - (NSMutableArray<TaskViewModel *>*) setupMockData {
     NSMutableArray<TaskViewModel*>* rows = [[NSMutableArray alloc] init];
-    [rows addObject: [TaskViewModel getTaskVM:@"Man" time:10 dependencies:NULL delegate:self]];
-    [rows addObject: [TaskViewModel getTaskVM:@"Woman" time:5 dependencies:NULL delegate:self]];
-    [rows addObject: [TaskViewModel getTaskVM:@"Child" time:8 dependencies:@[@"Woman"] delegate:self]];
-    [rows addObject: [TaskViewModel getTaskVM:@"Baby" time:10 dependencies:@[@"Woman", @"Child"] delegate:self]];
+    
+    [rows addObject: [TaskViewModel getTaskVM:@"Shirt" time:10 dependencies:NULL delegate:self]];
+    [rows addObject: [TaskViewModel getTaskVM:@"Pant" time:5 dependencies:@[@"Shirt"] delegate:self]];
+    [rows addObject: [TaskViewModel getTaskVM:@"Tie" time:8 dependencies:@[@"Shirt"] delegate:self]];
+    [rows addObject: [TaskViewModel getTaskVM:@"Shoe" time:10 dependencies:@[@"Pant", @"Tie"] delegate:self]];
+    [rows addObject: [TaskViewModel getTaskVM:@"Office" time:10 dependencies:@[@"Shirt", @"Pant", @"Tie", @"Shoe"] delegate:self]];
     
     _taskViewModels = rows;
     [self bindDependencies];

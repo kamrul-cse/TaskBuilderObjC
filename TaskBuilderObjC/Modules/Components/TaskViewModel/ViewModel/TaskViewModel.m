@@ -17,7 +17,7 @@
     TaskCell *cell = [TaskCell getCell];
     cell.nameLabel.text = name_;
     cell.progressView.progress = 0;
-    cell.statusLabel.text = @"";
+    cell.statusLabel.text = NULL;
     
     TaskViewModel *vm = [[TaskViewModel alloc] init];
     task.delegate = vm;
@@ -35,7 +35,7 @@
     TaskCell *cell = [TaskCell getCell];
     cell.nameLabel.text = name_;
     cell.progressView.progress = 0;
-    cell.statusLabel.text = @"";
+    cell.statusLabel.text = NULL;
     
     TaskViewModel *vm = [[TaskViewModel alloc] init];
     task.delegate = vm;
@@ -69,7 +69,7 @@
         _cell.statusLabel.text = [NSString stringWithFormat:@"Depends on %@", [dependencies_ componentsJoinedByString:@", "]];
         _dependencies = [[NSMutableArray alloc] initWithArray:dependencies_];
     } else {
-        _cell.statusLabel.text = @"";
+        _cell.statusLabel.text = NULL;
     }
 }
 
@@ -129,6 +129,13 @@
     }
     
     return vm;
+}
+
++ (UITableViewCell*) getCell: (NSString*) title {
+    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    cell.textLabel.text = title;
+    cell.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.25];
+    return cell;
 }
 
 @end

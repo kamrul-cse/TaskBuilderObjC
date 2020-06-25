@@ -12,8 +12,9 @@
 		024DED6924A4C75300AFA943 /* TaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 024DED6824A4C75300AFA943 /* TaskManager.m */; };
 		024DED6B24A4C87300AFA943 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 024DED6A24A4C87300AFA943 /* Task.m */; };
 		024DED6D24A4C8DC00AFA943 /* TaskViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 024DED6C24A4C8DC00AFA943 /* TaskViewModel.m */; };
+		024DED6F24A4D8BB00AFA943 /* HomeVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 024DED6E24A4D8BB00AFA943 /* HomeVM.m */; };
+		024DED7124A4D99D00AFA943 /* AddTaskVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 024DED7024A4D99D00AFA943 /* AddTaskVM.m */; };
 		027AA3CB24A39246004F98FE /* AddTaskVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 027AA3CA24A39246004F98FE /* AddTaskVC.m */; };
-		027AA3CE24A3925A004F98FE /* PerformTaskVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 027AA3CD24A3925A004F98FE /* PerformTaskVC.m */; };
 		0292BD2824A38B9F006F7E2F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0292BD2724A38B9F006F7E2F /* AppDelegate.m */; };
 		0292BD2B24A38B9F006F7E2F /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0292BD2A24A38B9F006F7E2F /* SceneDelegate.m */; };
 		0292BD2E24A38B9F006F7E2F /* HomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0292BD2D24A38B9F006F7E2F /* HomeVC.m */; };
@@ -32,13 +33,12 @@
 		024DED6824A4C75300AFA943 /* TaskManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskManager.m; sourceTree = "<group>"; };
 		024DED6A24A4C87300AFA943 /* Task.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
 		024DED6C24A4C8DC00AFA943 /* TaskViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskViewModel.m; sourceTree = "<group>"; };
+		024DED6E24A4D8BB00AFA943 /* HomeVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeVM.m; sourceTree = "<group>"; };
+		024DED7024A4D99D00AFA943 /* AddTaskVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddTaskVM.m; sourceTree = "<group>"; };
 		027AA3C924A39246004F98FE /* AddTaskVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddTaskVC.h; sourceTree = "<group>"; };
 		027AA3CA24A39246004F98FE /* AddTaskVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddTaskVC.m; sourceTree = "<group>"; };
-		027AA3CC24A3925A004F98FE /* PerformTaskVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PerformTaskVC.h; sourceTree = "<group>"; };
-		027AA3CD24A3925A004F98FE /* PerformTaskVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PerformTaskVC.m; sourceTree = "<group>"; };
 		028168C924A47BC10031945E /* TaskManagerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskManagerDelegate.h; sourceTree = "<group>"; };
 		028168CA24A47CAC0031945E /* TaskViewModelDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskViewModelDelegate.h; sourceTree = "<group>"; };
-		028168D024A486630031945E /* RowData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RowData.h; sourceTree = "<group>"; };
 		028168D124A4869D0031945E /* HomeVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeVM.h; sourceTree = "<group>"; };
 		028168D224A48F8C0031945E /* HomeVMDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeVMDelegate.h; sourceTree = "<group>"; };
 		0292BD2324A38B9F006F7E2F /* TaskBuilderObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskBuilderObjC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,8 +53,6 @@
 		0292BD3524A38BA0006F7E2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0292BD3724A38BA0006F7E2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0292BD3824A38BA0006F7E2F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		02B6C79624A3A55E0083C913 /* TaskBuilderObjC-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TaskBuilderObjC-Prefix.pch"; sourceTree = "<group>"; };
-		02B6C79724A3A57D0083C913 /* CommonMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonMacros.h; sourceTree = "<group>"; };
 		02B6C79924A3A5E70083C913 /* TaskManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskManager.h; sourceTree = "<group>"; };
 		02B6C79A24A3A65C0083C913 /* Task.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
 		02B6C79C24A3A91A0083C913 /* TaskDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskDelegate.h; sourceTree = "<group>"; };
@@ -83,11 +81,88 @@
 		02308FB724A3D53E001B128B /* TaskCell */ = {
 			isa = PBXGroup;
 			children = (
-				02308FB824A3D558001B128B /* TaskCell.h */,
-				02308FB924A3D558001B128B /* TaskCell.m */,
+				024DED7A24A4DC8000AFA943 /* Controller */,
 				02308FBA24A3D558001B128B /* TaskCell.xib */,
 			);
 			path = TaskCell;
+			sourceTree = "<group>";
+		};
+		024DED7224A4D9CD00AFA943 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				024DED6724A4C07C00AFA943 /* AddTaskVM.h */,
+				024DED7024A4D99D00AFA943 /* AddTaskVM.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		024DED7324A4D9DC00AFA943 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				027AA3C924A39246004F98FE /* AddTaskVC.h */,
+				027AA3CA24A39246004F98FE /* AddTaskVC.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		024DED7424A4DC1800AFA943 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				028168C924A47BC10031945E /* TaskManagerDelegate.h */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		024DED7524A4DC2200AFA943 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				02B6C79924A3A5E70083C913 /* TaskManager.h */,
+				024DED6824A4C75300AFA943 /* TaskManager.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		024DED7624A4DC3E00AFA943 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				02B6C79D24A3AF6C0083C913 /* TaskViewModel.h */,
+				024DED6C24A4C8DC00AFA943 /* TaskViewModel.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		024DED7724A4DC4A00AFA943 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				028168CA24A47CAC0031945E /* TaskViewModelDelegate.h */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		024DED7824A4DC5800AFA943 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				02B6C79C24A3A91A0083C913 /* TaskDelegate.h */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		024DED7924A4DC6200AFA943 /* Operation */ = {
+			isa = PBXGroup;
+			children = (
+				02B6C79A24A3A65C0083C913 /* Task.h */,
+				024DED6A24A4C87300AFA943 /* Task.m */,
+			);
+			path = Operation;
+			sourceTree = "<group>";
+		};
+		024DED7A24A4DC8000AFA943 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				02308FB824A3D558001B128B /* TaskCell.h */,
+				02308FB924A3D558001B128B /* TaskCell.m */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		027AA3C624A3902F004F98FE /* Home */ = {
@@ -103,28 +178,17 @@
 		027AA3C724A39224004F98FE /* AddTask */ = {
 			isa = PBXGroup;
 			children = (
-				027AA3C924A39246004F98FE /* AddTaskVC.h */,
-				027AA3CA24A39246004F98FE /* AddTaskVC.m */,
-				024DED6724A4C07C00AFA943 /* AddTaskVM.h */,
+				024DED7324A4D9DC00AFA943 /* ViewController */,
+				024DED7224A4D9CD00AFA943 /* ViewModel */,
 			);
 			path = AddTask;
-			sourceTree = "<group>";
-		};
-		027AA3C824A3922A004F98FE /* PerformTask */ = {
-			isa = PBXGroup;
-			children = (
-				027AA3CC24A3925A004F98FE /* PerformTaskVC.h */,
-				027AA3CD24A3925A004F98FE /* PerformTaskVC.m */,
-			);
-			path = PerformTask;
 			sourceTree = "<group>";
 		};
 		028168CB24A481A50031945E /* Task */ = {
 			isa = PBXGroup;
 			children = (
-				02B6C79A24A3A65C0083C913 /* Task.h */,
-				024DED6A24A4C87300AFA943 /* Task.m */,
-				02B6C79C24A3A91A0083C913 /* TaskDelegate.h */,
+				024DED7924A4DC6200AFA943 /* Operation */,
+				024DED7824A4DC5800AFA943 /* Delegate */,
 			);
 			path = Task;
 			sourceTree = "<group>";
@@ -132,9 +196,8 @@
 		028168CC24A481B20031945E /* TaskViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				02B6C79D24A3AF6C0083C913 /* TaskViewModel.h */,
-				024DED6C24A4C8DC00AFA943 /* TaskViewModel.m */,
-				028168CA24A47CAC0031945E /* TaskViewModelDelegate.h */,
+				024DED7624A4DC3E00AFA943 /* ViewModel */,
+				024DED7724A4DC4A00AFA943 /* Delegate */,
 			);
 			path = TaskViewModel;
 			sourceTree = "<group>";
@@ -142,25 +205,17 @@
 		028168CD24A481BA0031945E /* TaskManager */ = {
 			isa = PBXGroup;
 			children = (
-				02B6C79924A3A5E70083C913 /* TaskManager.h */,
-				024DED6824A4C75300AFA943 /* TaskManager.m */,
-				028168C924A47BC10031945E /* TaskManagerDelegate.h */,
+				024DED7524A4DC2200AFA943 /* Manager */,
+				024DED7424A4DC1800AFA943 /* Delegate */,
 			);
 			path = TaskManager;
-			sourceTree = "<group>";
-		};
-		028168CE24A4864C0031945E /* RowData */ = {
-			isa = PBXGroup;
-			children = (
-				028168D024A486630031945E /* RowData.h */,
-			);
-			path = RowData;
 			sourceTree = "<group>";
 		};
 		028168D324A48F910031945E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				028168D124A4869D0031945E /* HomeVM.h */,
+				024DED6E24A4D8BB00AFA943 /* HomeVM.m */,
 				028168D224A48F8C0031945E /* HomeVMDelegate.h */,
 			);
 			path = ViewModel;
@@ -186,7 +241,6 @@
 			isa = PBXGroup;
 			children = (
 				02308FB624A3D537001B128B /* Views */,
-				02B6C79824A3A5A80083C913 /* Macros */,
 				0292BD3F24A38BF9006F7E2F /* Modules */,
 				0292BD2624A38B9F006F7E2F /* AppDelegate.h */,
 				0292BD2724A38B9F006F7E2F /* AppDelegate.m */,
@@ -205,7 +259,6 @@
 			isa = PBXGroup;
 			children = (
 				02B6C79424A3A3C50083C913 /* Components */,
-				027AA3C824A3922A004F98FE /* PerformTask */,
 				027AA3C724A39224004F98FE /* AddTask */,
 				027AA3C624A3902F004F98FE /* Home */,
 			);
@@ -215,21 +268,11 @@
 		02B6C79424A3A3C50083C913 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				028168CE24A4864C0031945E /* RowData */,
 				028168CB24A481A50031945E /* Task */,
 				028168CC24A481B20031945E /* TaskViewModel */,
 				028168CD24A481BA0031945E /* TaskManager */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		02B6C79824A3A5A80083C913 /* Macros */ = {
-			isa = PBXGroup;
-			children = (
-				02B6C79624A3A55E0083C913 /* TaskBuilderObjC-Prefix.pch */,
-				02B6C79724A3A57D0083C913 /* CommonMacros.h */,
-			);
-			path = Macros;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,7 +356,8 @@
 				0292BD3924A38BA0006F7E2F /* main.m in Sources */,
 				027AA3CB24A39246004F98FE /* AddTaskVC.m in Sources */,
 				0292BD2B24A38B9F006F7E2F /* SceneDelegate.m in Sources */,
-				027AA3CE24A3925A004F98FE /* PerformTaskVC.m in Sources */,
+				024DED7124A4D99D00AFA943 /* AddTaskVM.m in Sources */,
+				024DED6F24A4D8BB00AFA943 /* HomeVM.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
