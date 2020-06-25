@@ -25,6 +25,7 @@
 		02308FB824A3D558001B128B /* TaskCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskCell.h; sourceTree = "<group>"; };
 		02308FB924A3D558001B128B /* TaskCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
 		02308FBA24A3D558001B128B /* TaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
+		024DED6724A4C07C00AFA943 /* AddTaskVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddTaskVM.h; sourceTree = "<group>"; };
 		027AA3C924A39246004F98FE /* AddTaskVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddTaskVC.h; sourceTree = "<group>"; };
 		027AA3CA24A39246004F98FE /* AddTaskVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddTaskVC.m; sourceTree = "<group>"; };
 		027AA3CC24A3925A004F98FE /* PerformTaskVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PerformTaskVC.h; sourceTree = "<group>"; };
@@ -98,6 +99,7 @@
 			children = (
 				027AA3C924A39246004F98FE /* AddTaskVC.h */,
 				027AA3CA24A39246004F98FE /* AddTaskVC.m */,
+				024DED6724A4C07C00AFA943 /* AddTaskVM.h */,
 			);
 			path = AddTask;
 			sourceTree = "<group>";

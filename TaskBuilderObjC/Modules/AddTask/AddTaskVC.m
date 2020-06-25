@@ -17,13 +17,22 @@
 @end
 
 @implementation AddTaskVC
+@synthesize viewModel;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    viewModel = [[AddTaskVM alloc] init];
 }
 
 - (IBAction)addTapped:(id)sender {
+    NSString *error = [viewModel checkError:_nameField.text time:_timeField.text dependency:_dependencyField.text];
+    _messageLabel.text = error;
+    if (error == NULL) {
+        [_messageLabel setHidden:YES];
+    } else {
+        [_messageLabel setHidden:NO];
+    }
 }
 
 @end

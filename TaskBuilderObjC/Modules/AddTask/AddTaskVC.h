@@ -7,11 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
-NS_ASSUME_NONNULL_BEGIN
+#import "AddTaskVM.h"
 
 @interface AddTaskVC : UIViewController
+@property (strong, nonatomic) AddTaskVM *viewModel;
 
 @end
-
-NS_ASSUME_NONNULL_END

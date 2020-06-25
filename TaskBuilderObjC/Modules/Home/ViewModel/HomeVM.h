@@ -141,7 +141,9 @@
         __weak HomeVM *weakSelf = self;
         [weakSelf refreshData];
     });
-    
 }
 
+- (void)dataUpdated {
+    [self refreshData];
+}
 @end

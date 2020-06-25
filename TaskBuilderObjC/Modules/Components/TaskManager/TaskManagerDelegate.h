@@ -11,6 +11,7 @@
 
 @protocol TaskManagerDelegate
 
+- (void) dataUpdated;
 - (void) stateChanged: (NSString*) taskName_ progress:(float)value_;
 
 @end

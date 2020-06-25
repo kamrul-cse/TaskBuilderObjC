@@ -37,6 +37,7 @@ static TaskManager *_shared = nil;
         _taskViewModels = [[NSMutableArray<TaskViewModel *> alloc] init];
     }
     [_taskViewModels addObject: taskVM];
+    [delegate dataUpdated];
 }
 
 - (void) removeAll {
@@ -118,6 +119,10 @@ static TaskManager *_shared = nil;
         }
     }
     return NULL;
+}
+
+- (TaskViewModel*) constructTaskVM: (NSString*)name_ time: (NSString*)time_ dependency:(NSString*)dependency_ {
+    return [[TaskViewModel alloc] init];
 }
 
 #pragma mark - TaskViewModelDelegate
