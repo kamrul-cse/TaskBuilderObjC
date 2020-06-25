@@ -41,7 +41,6 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="startTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IJU-Ux-MyX"/>
-                                            <segue destination="EXU-6O-c9r" kind="show" id="eZY-eA-9I3"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -96,7 +95,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="exm-Ep-c77">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                         </subviews>

@@ -7,11 +7,10 @@
 //
 
 #import "HomeVC.h"
-#import "RowData.h"
 #import "Task.h"
 #import "TaskManager.h"
 
-@interface HomeVC () <UITableViewDelegate, UITableViewDataSource> {
+@interface HomeVC () <TaskDelegate, UITableViewDelegate, UITableViewDataSource> {
     NSMutableArray<TaskViewModel*> *rows;
 }
 
@@ -25,44 +24,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    rows = [[NSMutableArray alloc] init];
-    [rows addObject: [TaskViewModel getTaskVM:@"Man" time:10]];
-    [rows addObject: [TaskViewModel getTaskVM:@"Woman" time:5]];
-    [rows addObject: [TaskViewModel getTaskVM:@"Baby" time:10]];
-    
-    [[rows[2] model] addDependency: [rows[1] model]];
+    rows = [[TaskManager sharedTaskManager] setupMockData];
     
     _tableView.tableFooterView = [[UIView alloc] init];
     _tableView.delegate = self;
     _tableView.dataSource = self;
-    
-    
-    TaskManager *manager = [TaskManager sharedTaskManager];
-    
-    NSEnumerator *e = [rows objectEnumerator];
-    id object;
-    while (object = [e nextObject]) {
-        [manager add: object];
-    }
-    
-    
-    [manager start];
-}
-
-- (RowData*)getRowData:(NSString*)title {
-    UITableViewCell *cell = [[UITableViewCell alloc] init];
-    cell.textLabel.text = title;
-    RowData *data = [[RowData alloc] init];
-    data.cell = cell;
-    return data;
 }
 
 - (IBAction)startTapped:(id)sender {
-    
+    [[TaskManager sharedTaskManager] start];
 }
 
 - (IBAction)trashTapped:(id)sender {
     
+}
+
+#pragma mark - TaskDelegate
+- (void)progress:(NSString *)taskName_ progress:(double)value_ {
+    NSLog(@"%@ %f", taskName_, value_);
+}
+
+- (void)stateChanged:(NSString *)taskName_ progress:(double)value_ {
+    NSLog(@"%@ stateChanged %f", taskName_, value_);
 }
 
 #pragma mark - UITableViewDataSource

@@ -9,17 +9,19 @@
 #import <Foundation/Foundation.h>
 #import "TaskDelegate.h"
 
-@interface Task: NSOperation {
-    id delegate;
-}
+@interface Task: NSOperation
 @property (strong, nonatomic) NSString* taskName;
-@property int estimatedTime;
-@property double progress;
 @property (strong, nonatomic) NSArray<NSString*>* dependentTasks;
+@property int estimatedTime;
+@property float taskProgress;
 @property BOOL stopQueued;
+
+@property (nonatomic, weak) id <TaskDelegate> delegate;
+
 @end
 
 @implementation Task
+@synthesize delegate;
 
 -(id)initWithName:(NSString *)taskName_ time:(int)estimatedTime_
 {
@@ -27,17 +29,19 @@
      if (self) {
          self.taskName = taskName_;
          self.estimatedTime = estimatedTime_;
-         self.progress = 0.0;
+         self.taskProgress = 0.0;
          self.stopQueued = NO;
      }
      return self;
 }
 
 - (void)main {
-    for (int i=1; i<=_estimatedTime; i++) {
-        NSLog(@"%@ %d", _taskName, i);
-        if ( i == _estimatedTime ) {
-            NSLog(@"%@ completed", _taskName);
+    int initialValue = MIN(1, (int)_taskProgress);
+    for (int i=initialValue; i<=_estimatedTime; i++) {
+        _taskProgress = (float)i/_estimatedTime * 100;
+        [delegate progress: _taskName progress: _taskProgress];
+        if ( i == _estimatedTime || i == 1 ) {
+            [delegate stateChanged: _taskName progress: _taskProgress];
         }
         [NSThread sleepForTimeInterval:1.0f];
     }

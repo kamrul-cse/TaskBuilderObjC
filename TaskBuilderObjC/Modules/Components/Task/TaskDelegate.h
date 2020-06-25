@@ -11,6 +11,9 @@
 
 @protocol TaskDelegate
 
+- (void) progress: (NSString*) taskName_ progress:(double)value_;
+- (void) stateChanged: (NSString*) taskName_ progress:(double)value_;
+
 //- (void)progress:(Task)task;
 //- (void)stateChanged:(RowData *)task;
 
