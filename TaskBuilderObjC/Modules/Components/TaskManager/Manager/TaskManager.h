@@ -17,7 +17,9 @@
 @property (nonatomic, weak) id <TaskManagerDelegate> delegate;
 
 // methods
+// singleton for task manager
 + (TaskManager *) sharedTaskManager;
+
 - (void) add:(TaskViewModel*)taskVM;
 - (void) removeAll;
 - (void) start;

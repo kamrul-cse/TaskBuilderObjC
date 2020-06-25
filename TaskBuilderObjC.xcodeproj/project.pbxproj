@@ -165,12 +165,20 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		024DED7B24A4E97C00AFA943 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0292BD2C24A38B9F006F7E2F /* HomeVC.h */,
+				0292BD2D24A38B9F006F7E2F /* HomeVC.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		027AA3C624A3902F004F98FE /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				024DED7B24A4E97C00AFA943 /* ViewController */,
 				028168D324A48F910031945E /* ViewModel */,
-				0292BD2C24A38B9F006F7E2F /* HomeVC.h */,
-				0292BD2D24A38B9F006F7E2F /* HomeVC.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
