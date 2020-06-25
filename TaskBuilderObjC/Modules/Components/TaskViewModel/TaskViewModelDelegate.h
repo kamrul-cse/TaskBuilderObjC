@@ -11,6 +11,6 @@
 
 @protocol TaskViewModelDelegate
 
-- (void) stateChanged: (NSString*) taskName_ progress:(double)value_;
+- (void) stateChanged: (NSString*) taskName_ progress:(float)value_;
 
 @end

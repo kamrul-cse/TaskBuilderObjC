@@ -31,6 +31,9 @@
 		027AA3CD24A3925A004F98FE /* PerformTaskVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PerformTaskVC.m; sourceTree = "<group>"; };
 		028168C924A47BC10031945E /* TaskManagerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskManagerDelegate.h; sourceTree = "<group>"; };
 		028168CA24A47CAC0031945E /* TaskViewModelDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskViewModelDelegate.h; sourceTree = "<group>"; };
+		028168D024A486630031945E /* RowData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RowData.h; sourceTree = "<group>"; };
+		028168D124A4869D0031945E /* HomeVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeVM.h; sourceTree = "<group>"; };
+		028168D224A48F8C0031945E /* HomeVMDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeVMDelegate.h; sourceTree = "<group>"; };
 		0292BD2324A38B9F006F7E2F /* TaskBuilderObjC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskBuilderObjC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0292BD2624A38B9F006F7E2F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0292BD2724A38B9F006F7E2F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -83,6 +86,7 @@
 		027AA3C624A3902F004F98FE /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				028168D324A48F910031945E /* ViewModel */,
 				0292BD2C24A38B9F006F7E2F /* HomeVC.h */,
 				0292BD2D24A38B9F006F7E2F /* HomeVC.m */,
 			);
@@ -134,6 +138,23 @@
 			path = TaskManager;
 			sourceTree = "<group>";
 		};
+		028168CE24A4864C0031945E /* RowData */ = {
+			isa = PBXGroup;
+			children = (
+				028168D024A486630031945E /* RowData.h */,
+			);
+			path = RowData;
+			sourceTree = "<group>";
+		};
+		028168D324A48F910031945E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				028168D124A4869D0031945E /* HomeVM.h */,
+				028168D224A48F8C0031945E /* HomeVMDelegate.h */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		0292BD1A24A38B9F006F7E2F = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +204,7 @@
 		02B6C79424A3A3C50083C913 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				028168CE24A4864C0031945E /* RowData */,
 				028168CB24A481A50031945E /* Task */,
 				028168CC24A481B20031945E /* TaskViewModel */,
 				028168CD24A481BA0031945E /* TaskManager */,

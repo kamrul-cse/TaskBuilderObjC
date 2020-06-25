@@ -1,5 +1,5 @@
 //
-//  TaskManagerDelegate.h
+//  HomeVMDelegate.h
 //  TaskBuilderObjC
 //
 //  Created by Md. Kamrul Hasan on 25/6/20.
@@ -7,10 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TaskViewModel.h"
 
-@protocol TaskManagerDelegate
+@protocol HomeVMDelegate
 
-- (void) stateChanged: (NSString*) taskName_ progress:(float)value_;
+- (void) dataUpdated;
 
 @end

@@ -40,7 +40,7 @@
     for (int i=initialValue; i<=_estimatedTime; i++) {
         _taskProgress = (float)i/_estimatedTime * 100;
         [delegate progress: _taskName progress: _taskProgress];
-        if ( i == _estimatedTime || i == 1 ) {
+        if ( i == _estimatedTime || i == initialValue ) {
             [delegate stateChanged: _taskName progress: _taskProgress];
         }
         [NSThread sleepForTimeInterval:1.0f];

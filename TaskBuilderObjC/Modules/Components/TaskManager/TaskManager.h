@@ -8,12 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import "TaskViewModel.h"
+#import "TaskManagerDelegate.h"
 
 @interface TaskManager: NSObject <TaskViewModelDelegate>
 @property (strong, nonatomic) NSMutableArray<TaskViewModel *>* taskViewModels;
+
+@property (nonatomic, weak) id <TaskManagerDelegate> delegate;
 @end
 
 @implementation TaskManager
+@synthesize delegate;
+
 static TaskManager *_shared = nil;
 
 + (TaskManager *) sharedTaskManager {
@@ -60,9 +65,13 @@ static TaskManager *_shared = nil;
     return _taskViewModels;
 }
 
+- (NSMutableArray<TaskViewModel *>*) getData {
+    return _taskViewModels;
+}
+
 #pragma mark - TaskViewModelDelegate
-- (void)stateChanged:(NSString *)taskName_ progress:(double)value_ {
-    
+- (void)stateChanged:(NSString *)taskName_ progress:(float)value_ {
+    [delegate stateChanged:taskName_ progress:value_];
 }
 
 @end

@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HomeVM.h"
 
 @interface HomeVC : UIViewController
-
+@property (strong, nonatomic) HomeVM* viewModel;
 
 @end
 

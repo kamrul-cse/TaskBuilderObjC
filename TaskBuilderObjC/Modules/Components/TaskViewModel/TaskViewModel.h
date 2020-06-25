@@ -9,6 +9,7 @@
 
 
 #import <Foundation/Foundation.h>
+#import "Task.h"
 #import "TaskCell.h"
 #import "TaskViewModelDelegate.h"
 
@@ -48,7 +49,6 @@
 
 - (void)configure:(NSString *)taskName_ progress:(double)value_ {
     dispatch_async(dispatch_get_main_queue(), ^{
-       // do work here
         __weak TaskViewModel *weakSelf = self;
         weakSelf.cell.nameLabel.text = taskName_;
         weakSelf.cell.statusLabel.text = [NSString stringWithFormat:@"%0.1f%%", value_];
@@ -64,12 +64,12 @@
 
 
 #pragma mark - TaskDelegate
-- (void)progress:(NSString *)taskName_ progress:(double)value_ {
+- (void)progress:(NSString *)taskName_ progress:(float)value_ {
     NSLog(@"%@ %f", taskName_, value_);
     [self configure:taskName_ progress:value_];
 }
 
-- (void)stateChanged:(NSString *)taskName_ progress:(double)value_ {
+- (void)stateChanged:(NSString *)taskName_ progress:(float)value_ {
     NSLog(@"%@ stateChanged %f", taskName_, value_);
     [delegate stateChanged:taskName_ progress:value_];
 }
