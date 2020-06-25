@@ -28,7 +28,6 @@
     self = [super init];
     if (self) {
         rows = [[NSMutableArray alloc] init];
-        [rows addObject: [self getCell:@"No Tasks Found"] ];
     }
     return self;
 }
@@ -64,12 +63,21 @@
 }
 
 - (void) refreshData {
+    NSArray<TaskViewModel*> *array = [[TaskManager sharedTaskManager] getData];
     canResume = NO;
+    if (array.count == 0) {
+        haveTasks = NO;
+        [rows addObject: [self getCell:@"No Tasks Found"] ];
+        return;
+    }
+    haveTasks = YES;
+    
     NSMutableArray *pending = [[NSMutableArray alloc] init];
     NSMutableArray *running = [[NSMutableArray alloc] init];
     NSMutableArray *completed = [[NSMutableArray alloc] init];
     
-    NSArray<TaskViewModel*> *array = [[TaskManager sharedTaskManager] getData];
+    haveTasks = array.count == 0 ? NO : YES;
+    BOOL havePending = NO;
     [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         TaskViewModel *viewModel = (TaskViewModel*) obj;
         if (viewModel.model.taskProgress == 100) {
@@ -90,7 +98,7 @@
             TaskViewModel *taskVM = pending[i];
             [rows addObject:taskVM.cell];
         }
-        canResume = YES;
+        havePending = YES;
     }
     
     if (running.count > 0) {
@@ -115,7 +123,7 @@
         }
     }
     
-    if (!canResume) {
+    if (!havePending && !canResume) {
         [[TaskManager sharedTaskManager] reset];
     }
     

@@ -26,7 +26,6 @@
     viewModel = [[HomeVM alloc] init];
     viewModel.delegate = self;
     
-    [_startButton setTitle:@"Simulate Mock Tasks" forState:UIControlStateNormal];
     rows = [viewModel getRows];
     
     _tableView.tableFooterView = [[UIView alloc] init];
@@ -37,7 +36,12 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    
+    [viewModel refreshData];
+    if (viewModel.haveTasks) {
+        [_startButton setTitle:@"Start" forState:UIControlStateNormal];
+    } else {
+        [_startButton setTitle:@"Simulate Mock Tasks" forState:UIControlStateNormal];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

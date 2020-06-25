@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		02308FBB24A3D558001B128B /* TaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02308FB924A3D558001B128B /* TaskCell.m */; };
 		02308FBC24A3D558001B128B /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02308FBA24A3D558001B128B /* TaskCell.xib */; };
+		024DED6924A4C75300AFA943 /* TaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 024DED6824A4C75300AFA943 /* TaskManager.m */; };
+		024DED6B24A4C87300AFA943 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 024DED6A24A4C87300AFA943 /* Task.m */; };
+		024DED6D24A4C8DC00AFA943 /* TaskViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 024DED6C24A4C8DC00AFA943 /* TaskViewModel.m */; };
 		027AA3CB24A39246004F98FE /* AddTaskVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 027AA3CA24A39246004F98FE /* AddTaskVC.m */; };
 		027AA3CE24A3925A004F98FE /* PerformTaskVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 027AA3CD24A3925A004F98FE /* PerformTaskVC.m */; };
 		0292BD2824A38B9F006F7E2F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0292BD2724A38B9F006F7E2F /* AppDelegate.m */; };
@@ -26,6 +29,9 @@
 		02308FB924A3D558001B128B /* TaskCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskCell.m; sourceTree = "<group>"; };
 		02308FBA24A3D558001B128B /* TaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
 		024DED6724A4C07C00AFA943 /* AddTaskVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddTaskVM.h; sourceTree = "<group>"; };
+		024DED6824A4C75300AFA943 /* TaskManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskManager.m; sourceTree = "<group>"; };
+		024DED6A24A4C87300AFA943 /* Task.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		024DED6C24A4C8DC00AFA943 /* TaskViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskViewModel.m; sourceTree = "<group>"; };
 		027AA3C924A39246004F98FE /* AddTaskVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddTaskVC.h; sourceTree = "<group>"; };
 		027AA3CA24A39246004F98FE /* AddTaskVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddTaskVC.m; sourceTree = "<group>"; };
 		027AA3CC24A3925A004F98FE /* PerformTaskVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PerformTaskVC.h; sourceTree = "<group>"; };
@@ -117,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				02B6C79A24A3A65C0083C913 /* Task.h */,
+				024DED6A24A4C87300AFA943 /* Task.m */,
 				02B6C79C24A3A91A0083C913 /* TaskDelegate.h */,
 			);
 			path = Task;
@@ -126,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				02B6C79D24A3AF6C0083C913 /* TaskViewModel.h */,
+				024DED6C24A4C8DC00AFA943 /* TaskViewModel.m */,
 				028168CA24A47CAC0031945E /* TaskViewModelDelegate.h */,
 			);
 			path = TaskViewModel;
@@ -135,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				02B6C79924A3A5E70083C913 /* TaskManager.h */,
+				024DED6824A4C75300AFA943 /* TaskManager.m */,
 				028168C924A47BC10031945E /* TaskManagerDelegate.h */,
 			);
 			path = TaskManager;
@@ -294,8 +303,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				024DED6B24A4C87300AFA943 /* Task.m in Sources */,
 				02308FBB24A3D558001B128B /* TaskCell.m in Sources */,
+				024DED6924A4C75300AFA943 /* TaskManager.m in Sources */,
 				02B6C79B24A3A65C0083C913 /* Task.h in Sources */,
+				024DED6D24A4C8DC00AFA943 /* TaskViewModel.m in Sources */,
 				0292BD2E24A38B9F006F7E2F /* HomeVC.m in Sources */,
 				0292BD2824A38B9F006F7E2F /* AppDelegate.m in Sources */,
 				0292BD3924A38BA0006F7E2F /* main.m in Sources */,

@@ -26,10 +26,23 @@
 }
 
 - (IBAction)addTapped:(id)sender {
-    NSString *error = [viewModel checkError:_nameField.text time:_timeField.text dependency:_dependencyField.text];
+    NSString *name = [_nameField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString *time = _timeField.text;
+    NSString *dependency = [_dependencyField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    NSString *error = [viewModel checkError:name time:time dependency:dependency];
     _messageLabel.text = error;
+    
     if (error == NULL) {
         [_messageLabel setHidden:YES];
+        
+        TaskViewModel *taskVM = [viewModel getTaskVM:name time:time dependency:dependency];
+        NSLog(@"%@ created", taskVM.model.taskName);
+        
+        taskVM.delegate = [TaskManager sharedTaskManager];
+        [[TaskManager sharedTaskManager] add:taskVM];
+        
+        [self.navigationController popViewControllerAnimated:true];
     } else {
         [_messageLabel setHidden:NO];
     }
