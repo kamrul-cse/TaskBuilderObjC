@@ -13,6 +13,8 @@
 @synthesize runningTasks;
 @synthesize canResume;
 @synthesize haveTasks;
+@synthesize havePending;
+@synthesize operationRunning;
 
 - (instancetype)init
 {
@@ -26,10 +28,12 @@
 - (void) start {
     [[TaskManager sharedTaskManager] setDelegate:self];
     [[TaskManager sharedTaskManager] start];
+    operationRunning = YES;
 }
 
 - (void) stop {
     [[TaskManager sharedTaskManager] stop];
+    operationRunning = NO;
 }
 
 - (void) removeAll {
@@ -37,6 +41,7 @@
     [rows removeAllObjects];
     [rows addObject: [TaskViewModel getCell:@"No Tasks Found"] ];
     haveTasks = NO;
+    operationRunning = NO;
 }
 
 - (void) setupMockData {
@@ -57,8 +62,9 @@
     NSArray<TaskViewModel*> *array = [[TaskManager sharedTaskManager] getData];
     canResume = NO;
     runningTasks = NO;
+    havePending = NO;
+    haveTasks = NO;
     if (array.count == 0) {
-        haveTasks = NO;
         [rows addObject: [TaskViewModel getCell:@"No Tasks Found"] ];
         return;
     }
@@ -69,15 +75,17 @@
     NSMutableArray *completed = [[NSMutableArray alloc] init];
     
     haveTasks = array.count == 0 ? NO : YES;
-    BOOL havePending = NO;
     [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         TaskViewModel *viewModel = (TaskViewModel*) obj;
+//        if (viewModel.model.isExecuting) {
+//            runningTasks = YES;
+//        }
+//        if (viewModel.model.isExecuting || viewModel.model.isFinished) {
+//            canResume = YES;
+//        }
         if (viewModel.model.taskProgress == 100) {
             [completed addObject:viewModel];
         } else if (viewModel.model.isExecuting || viewModel.model.taskProgress > 0) {
-            if (viewModel.model.isExecuting) {
-                runningTasks = YES;
-            }
             [running addObject:viewModel];
         } else {
             [pending addObject:viewModel];
@@ -105,9 +113,9 @@
             [rows addObject:taskVM.cell];
         }
         canResume = YES;
+        runningTasks = YES;
     }
     
-    [completed sortUsingSelector:@selector(compare:)];
     if (completed.count > 0) {
         UITableViewCell *cell = [TaskViewModel getCell:@"Completed Tasks"];
         [rows addObject:cell];
@@ -119,6 +127,7 @@
     }
     
     if (!havePending && !canResume) {
+        operationRunning = NO;
         [[TaskManager sharedTaskManager] reset];
     }
     

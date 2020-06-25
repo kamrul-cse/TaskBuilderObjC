@@ -91,11 +91,6 @@
     });
 }
 
-- (NSComparisonResult)compare:(TaskViewModel *)taskVM {
-    //most recent is at top position
-    return self.model.completedOn < taskVM.model.completedOn;
-}
-
 #pragma mark - TaskDelegate
 - (void)progress:(NSString *)taskName_ progress:(float)value_ {
     NSLog(@"%@ %f", taskName_, value_);

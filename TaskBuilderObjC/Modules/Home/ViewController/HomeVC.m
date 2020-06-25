@@ -53,6 +53,10 @@
 }
 
 - (IBAction)startTapped:(id)sender {
+    //_startButton. = NO;
+    [_startButton setHidden:YES];
+    [self performSelector:@selector(enableStartButton) withObject:nil afterDelay:1.0];
+    
     if ([_startButton.titleLabel.text  isEqual: @"Simulate Mock Tasks"]) {
         NSLog(@"Simulate Mock Tasks tapped -------------------------------------");
         [viewModel setupMockData];
@@ -70,7 +74,11 @@
         NSLog(@"Start tapped XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         [viewModel start];
     }
-    
+}
+
+- (void) enableStartButton {
+    //_startButton.userInteractionEnabled = YES;
+    [_startButton setHidden:NO];
 }
 
 - (void) stopAction {
@@ -92,9 +100,9 @@
         [weakSelf.tableView reloadData];
         if (!weakSelf.viewModel.haveTasks) {
             [weakSelf.startButton setTitle:@"Simulate Mock Tasks" forState:UIControlStateNormal];
-        } else if (weakSelf.viewModel.runningTasks) {
+        } else if (weakSelf.viewModel.operationRunning) {
             [weakSelf.startButton setTitle:@"Stop" forState:UIControlStateNormal];
-        } else if (weakSelf.viewModel.canResume) {
+        } else if (weakSelf.viewModel.havePending && weakSelf.viewModel.canResume) {
             [weakSelf.startButton setTitle:@"Resume" forState:UIControlStateNormal];
         } else {
             [weakSelf.startButton setTitle:@"Start" forState:UIControlStateNormal];

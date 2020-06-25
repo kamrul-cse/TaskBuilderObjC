@@ -15,6 +15,8 @@
 @property (nonatomic) BOOL canResume;
 @property (nonatomic) BOOL runningTasks;
 @property (nonatomic) BOOL haveTasks;
+@property (nonatomic) BOOL havePending;
+@property (nonatomic) BOOL operationRunning;
 
 @property (nonatomic, weak) id <HomeVMDelegate> delegate;
 

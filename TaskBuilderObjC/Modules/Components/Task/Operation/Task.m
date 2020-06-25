@@ -23,7 +23,7 @@
      return self;
 }
 
-- (id) initWithName:(NSString *)taskName_ time:(int)estimatedTime_ progress:(float)progress_ delegate:(id <TaskDelegate>)delegate_
+- (id) initWithName:(NSString *)taskName_ time:(int)estimatedTime_ progress:(float)progress_ completedOn:(NSTimeInterval)completedOn_ delegate:(id <TaskDelegate>)delegate_
 {
      self = [super init];
      if (self) {
@@ -31,6 +31,7 @@
          self.estimatedTime = estimatedTime_;
          self.taskProgress = progress_;
          self.stopQueued = NO;
+         self.completedOn = completedOn_;
          self.delegate = delegate_;
      }
      return self;
@@ -57,7 +58,7 @@
 }
 
 - (Task*) getCopy {
-    Task *task = [[Task alloc] initWithName:_taskName time:_estimatedTime progress:_taskProgress delegate:delegate];
+    Task *task = [[Task alloc] initWithName:_taskName time:_estimatedTime progress:_taskProgress completedOn:_completedOn delegate:delegate];
     return task;
 }
 @end

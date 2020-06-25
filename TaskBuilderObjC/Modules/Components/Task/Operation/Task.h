@@ -21,6 +21,5 @@
 
 // methods
 - (id)initWithName:(NSString *)taskName_ time:(int)estimatedTime_;
-- (id)initWithName:(NSString *)taskName_ time:(int)estimatedTime_ progress:(float)progress_ delegate:(id <TaskDelegate>)delegate_;
 - (Task*) getCopy;
 @end
