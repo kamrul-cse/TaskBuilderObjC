@@ -12,6 +12,7 @@
 
 @interface TaskManager: NSObject <TaskViewModelDelegate>
 @property (strong, nonatomic) NSMutableArray<TaskViewModel *>* taskViewModels;
+@property (strong, nonatomic) NSOperationQueue *queue;
 
 @property (nonatomic, weak) id <TaskManagerDelegate> delegate;
 @end
@@ -39,10 +40,42 @@ static TaskManager *_shared = nil;
 }
 
 - (void) start {
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    _queue = [[NSOperationQueue alloc] init];
     for (int i=0; i<_taskViewModels.count; i++) {
-        [queue addOperation:_taskViewModels[i].model];
+        [_queue addOperation:_taskViewModels[i].model];
     }
+}
+
+- (void) stop {
+    for (int i=0; i<_taskViewModels.count; i++) {
+        _taskViewModels[i].model.stopQueued = YES;
+    }
+    [_queue cancelAllOperations];
+    [self setupForResumeOperation];
+}
+
+- (void) reset {
+    for (int i=0; i<_taskViewModels.count; i++) {
+        _taskViewModels[i].model.taskProgress = 0;
+    }
+    [_queue cancelAllOperations];
+    [self setupForResumeOperation];
+}
+
+- (void) setupForResumeOperation {
+    NSMutableArray<TaskViewModel*>* rows = _taskViewModels;
+    for (int i=0; i<rows.count; i++) {
+        rows[i].model = [rows[i].model getCopy];
+        [rows[i] clearDependencies];
+    }
+    
+    [[rows[2] model] addDependency: [rows[1] model]];
+    [rows[2] addDepency:rows[1].model.taskName];
+    
+    [[rows[3] model] addDependency: [rows[2] model]];
+    [[rows[3] model] addDependency: [rows[1] model]];
+    [rows[3] addDepency:rows[1].model.taskName];
+    [rows[3] addDepency:rows[2].model.taskName];
 }
 
 - (NSMutableArray<TaskViewModel *>*) setupMockData {

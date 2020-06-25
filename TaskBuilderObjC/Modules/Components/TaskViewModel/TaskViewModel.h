@@ -42,26 +42,44 @@
     return vm;
 }
 
+- (void) clearDependencies {
+    _dependencies = [[NSMutableArray alloc] init];
+}
+
 - (void) addDepency: (NSString*)name_ {
     [_dependencies addObject:name_];
-    _cell.statusLabel.text = [NSString stringWithFormat:@"Waiting for %@", [_dependencies componentsJoinedByString:@", "]];
+    if (_model.taskProgress > 0) {
+        _cell.statusLabel.text = [NSString stringWithFormat:@"%0.1f%%", _model.taskProgress];
+    } else if (_model.taskProgress == 100) {
+        _cell.statusLabel.text = @"Done";
+    } else {
+        _cell.statusLabel.text = [NSString stringWithFormat:@"Depends on %@", [_dependencies componentsJoinedByString:@", "]];
+    }
+    
 }
 
 - (void)configure:(NSString *)taskName_ progress:(double)value_ {
     dispatch_async(dispatch_get_main_queue(), ^{
         __weak TaskViewModel *weakSelf = self;
         weakSelf.cell.nameLabel.text = taskName_;
-        weakSelf.cell.statusLabel.text = [NSString stringWithFormat:@"%0.1f%%", value_];
         weakSelf.cell.progressView.progress = value_/100;
         
         if (value_ == 100) {
             weakSelf.cell.statusLabel.text = @"Done";
             [weakSelf.cell.progressView setHidden:YES];
+        } else {
+            if (weakSelf.model.isExecuting) {
+                weakSelf.cell.statusLabel.text = [NSString stringWithFormat:@"%0.1f%%", value_];
+            }
+            [weakSelf.cell.progressView setHidden:NO];
         }
     });
 }
 
-
+- (NSComparisonResult)compare:(TaskViewModel *)taskVM {
+    //most recent is at top position
+    return self.model.completedOn < taskVM.model.completedOn;
+}
 
 #pragma mark - TaskDelegate
 - (void)progress:(NSString *)taskName_ progress:(float)value_ {

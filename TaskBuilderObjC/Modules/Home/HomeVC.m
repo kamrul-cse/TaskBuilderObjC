@@ -36,18 +36,23 @@
 }
 
 - (IBAction)startTapped:(id)sender {
-    //[[TaskManager sharedTaskManager] start];
-    [viewModel start];
+    if ([_startButton.titleLabel.text  isEqual: @"Stop"]) {
+        NSLog(@"Stop tapped");
+        [viewModel stop];
+        [_startButton setTitle:@"Resume" forState:UIControlStateNormal];
+    } else if ([_startButton.titleLabel.text  isEqual: @"Resume"]) {
+        NSLog(@"Resume tapped");
+        [viewModel start];
+        [_startButton setTitle:@"Resume" forState:UIControlStateNormal];
+    } else {
+        NSLog(@"Start tapped");
+        [viewModel start];
+    }
+    
 }
 
 - (IBAction)trashTapped:(id)sender {
     
-}
-
-#pragma mark - TaskManagerDelegate
-- (void)stateChanged:(NSString *)taskName_ progress:(float)value_ {
-    rows = [[TaskManager sharedTaskManager] getData];
-    [_tableView reloadData];
 }
 
 #pragma mark - HomeVMDelegate
@@ -56,6 +61,12 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         __weak HomeVC *weakSelf = self;
         [weakSelf.tableView reloadData];
+        
+        if (weakSelf.viewModel.canResume) {
+            [weakSelf.startButton setTitle:@"Stop" forState:UIControlStateNormal];
+        } else {
+            [weakSelf.startButton setTitle:@"Start" forState:UIControlStateNormal];
+        }
     });
 }
 
