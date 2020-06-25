@@ -68,6 +68,8 @@
     if (dependencies_.count > 0) {
         _cell.statusLabel.text = [NSString stringWithFormat:@"Depends on %@", [dependencies_ componentsJoinedByString:@", "]];
         _dependencies = [[NSMutableArray alloc] initWithArray:dependencies_];
+    } else {
+        _cell.statusLabel.text = @"";
     }
 }
 

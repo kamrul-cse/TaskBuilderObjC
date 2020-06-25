@@ -56,6 +56,7 @@ static TaskManager *_shared = nil;
 - (void) reset {
     for (int i=0; i<_taskViewModels.count; i++) {
         _taskViewModels[i].model.taskProgress = 0;
+        [_taskViewModels[i] setup:_taskViewModels[i].dependencies];
     }
     [_queue cancelAllOperations];
     [self setupForResumeOperation];

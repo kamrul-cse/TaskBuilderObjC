@@ -24,4 +24,5 @@
 
 + (TaskViewModel*) getTaskVM: (NSString*)name_ time:(int)estimatedTime_ dependencies:(NSArray<NSString*>*)dependencies_;
 + (TaskViewModel*) constructTaskVM: (NSString*)name_ time: (NSString*)time_ dependency:(NSString*)dependency_;
+- (void) setup:(NSArray*)dependencies_;
 @end
